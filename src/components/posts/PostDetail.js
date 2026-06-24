@@ -41,7 +41,7 @@ export const PostDetail = ({ isAdmin }) => {
       <div className="container">
         <h1 className="title">{post.title}</h1>
         <p className="subtitle">
-          By {post.user.username}
+          By <a href={`/profiles/${post.user.id}`}>{post.user.username}</a>
           {post.category && <> &middot; {post.category.label}</>}
           {post.publication_date && (
             <> &middot; {formatPublicationDate(post.publication_date)}</>
@@ -125,7 +125,7 @@ export const PostDetail = ({ isAdmin }) => {
         )}
         <hr />
         <div className="is-flex is-justify-content-space-between is-align-items-center mb-3">
-          <h2 className="title is-5 mb-0">Comments</h2>
+          <h2 className="title is-5 mb-0">Comments ({comments.length})</h2>
           <button
             className="button is-primary is-small"
             onClick={() => navigate(`/posts/${postId}/comments/new`)}
